@@ -33,14 +33,17 @@ class MainHandler(BaseHandler):
 
 class ResultHandler(BaseHandler):
     def post(self):
-        if self.request.get("operation") == "+":
-            result = int(self.request.get("x")) + int(self.request.get("y"))
-        elif self.request.get("operation") == "-":
-            result = int(self.request.get("x")) - int(self.request.get("y"))
-        elif self.request.get("operation") == "*":
-            result = int(self.request.get("x")) * int(self.request.get("y"))
-        elif self.request.get("operation") == "/":
-            result = int(self.request.get("x")) / int(self.request.get("y"))
+        x = int(self.request.get("x"))
+        y = int(self.request.get("y"))
+        operation = self.request.get("operation")
+        if operation == "+":
+            result = (x + y)
+        elif operation == "-":
+            result = (x - y)
+        elif operation == "*":
+            result = (x * y)
+        elif operation == "/":
+            result = (x / y)
         return self.write(result)
 
 app = webapp2.WSGIApplication([
